@@ -1,0 +1,27 @@
+.counter {
+    border: 1px solid rgb(132, 164, 87);
+    border-radius: 20px;
+    padding: 30px;
+    width: 300px;
+    margin: 30px auto;
+    font-weight: 500;
+  }
+
+button {
+  margin: 10px 0 10px 10px;
+  padding: 10px 20px;
+  background-color: rgb(188, 229, 138);
+  color: #333;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+button:hover {
+    background-color: rgb(251, 165, 179);
+  }
+
+  .counter button:disabled{
+      background: rgb(206, 205, 205);
+  }

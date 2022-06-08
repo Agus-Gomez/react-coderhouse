@@ -2,7 +2,7 @@ import {Navbar, Container, Nav, Form, FormControl, Button} from 'react-bootstrap
 import {Outlet, Link} from 'react-router-dom';
 import CartWidget from '../../components/cartWidget';
 
-function navBar() {
+function NavBar() {
   return( 
   <>
   <Navbar className='navBg' variant='dark' expand="lg">
@@ -41,4 +41,4 @@ function navBar() {
   );
 };
 
-export default navBar;
+export default NavBar;
