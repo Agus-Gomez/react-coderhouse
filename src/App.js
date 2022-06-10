@@ -7,12 +7,12 @@ import Contact from './components/contact';
 import Home from './components/home';
 import NavBar from './layouts/navBar/navBar';
 import ItemListContainer from './components/itemListContainer'
-import ItemCount from './components/ItemCount/ItemCount.js';
+// import ItemCount from './components/ItemCount/ItemCount.js';
 function App() {
 
-  const onAdd = (quantity) => {
-    console.log(`Has agregado ${quantity} unidades`);
-  }
+  // const onAdd = (quantity) => {
+  //   console.log(`Has agregado ${quantity} unidades`);
+  // }
 
 
   return (
@@ -30,8 +30,8 @@ function App() {
       </Routes>
       </BrowserRouter>
       <navBar />
-      <ItemListContainer title='Bienvenidos a la sección de productos'/>
-      < ItemCount initial ={1} stock={5} onAdd={onAdd} />
+      <ItemListContainer/>
+      {/* < ItemCount initial ={1} stock={5} onAdd={onAdd} /> */}
     </div>
   
   );
