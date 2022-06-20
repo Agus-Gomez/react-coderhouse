@@ -1,9 +1,13 @@
 const Home = () => {
-return(
-    <div>
-        <h1>View Home</h1>
+  return (
+    <div className="welcome-section">
+      <div className="layer">
+        <h1 className="welcome-headline">
+            PAWSE CAT CAFE
+        </h1>
+      </div>
     </div>
-)
-}
+  );
+};
 
-export default Home
+export default Home;

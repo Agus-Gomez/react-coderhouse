@@ -1,13 +1,13 @@
-import {Navbar, Container, Nav, Form, FormControl, Button} from 'react-bootstrap'
+import {Navbar, Container, Nav, Form,} from 'react-bootstrap'
 import {Outlet, Link} from 'react-router-dom';
 import CartWidget from '../../components/cartWidget';
 
 function NavBar() {
-  return( 
+  return ( 
   <>
-  <Navbar className='navBg' variant='dark' expand="lg">
+  <Navbar className='navBg' variant='light' expand="lg">
   <Container fluid>
-    <Navbar.Brand as={Link} to='/'>Navbar scroll</Navbar.Brand>
+    <Navbar.Brand as={Link} to='/'>Logo</Navbar.Brand>
     <Navbar.Toggle aria-controls="navbarScroll" />
     <Navbar.Collapse id="navbarScroll">
       <Nav
@@ -15,19 +15,9 @@ function NavBar() {
         <Nav.Link as={Link} to='/'>Home</Nav.Link>
         <Nav.Link as={Link} to='/about'>About</Nav.Link>
         <Nav.Link as={Link} to='/contact'>Contact</Nav.Link>
-        <Nav.Link as={Link} to=''> <CartWidget/></Nav.Link>
-        
-        
-      
       </Nav>
       <Form className="d-flex">
-        <FormControl
-          type="search"
-          placeholder="Search"
-          className="me-2"
-          aria-label="Search"
-        />
-        <Button variant="outline-success">Search</Button>
+      <Nav.Link as={Link} to=''><CartWidget/></Nav.Link>
       </Form>
     </Navbar.Collapse>
   </Container>

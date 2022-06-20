@@ -21,7 +21,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 .App-link {
@@ -38,13 +38,40 @@
 }
 
 /* estilos de navBar */
-section {
-  color: #fff;
-  text-shadow: 3px 3px rgba(50,50,70,0.5);
-  background-color: #ffb6b9b0;
-  height: 7vh;
+.navBg{
+  background-color: #f7f7f7;
 }
 
-.navBg{
-  background-color: #7952b3;
+.d-flex icon{
+  color: rgb(0, 0, 0);
 }
+
+/* home background*/
+
+.welcome-section {
+  background-image: url("./components/img/home/catcafeblack.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100vh;
+}
+
+.layer {
+  background-color: rgba(255, 206, 138, 0.385);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; 
+}
+
+.welcome-headline {
+    color: #fffffff8;
+    text-align: center;
+    padding-top: 20vh;
+    font-size: 8rem;
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing:normal; 
+  }
+

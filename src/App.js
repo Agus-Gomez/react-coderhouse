@@ -7,6 +7,7 @@ import Contact from './components/contact';
 import Home from './components/home';
 import NavBar from './layouts/navBar/navBar';
 import ItemListContainer from './components/itemListContainer'
+import ItemDetailContainer from './components/ItemDetailContainer/itemDetailContainer.js';
 // import ItemCount from './components/ItemCount/ItemCount.js';
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
       <navBar />
       <ItemListContainer/>
       {/* < ItemCount initial ={1} stock={5} onAdd={onAdd} /> */}
+      <ItemDetailContainer/> 
     </div>
   
   );
