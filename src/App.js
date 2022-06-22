@@ -2,7 +2,7 @@ import "./App.css";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.css';
 // importo los comp creados
-import About from './components/about';
+import Products from './components/products';
 import Contact from './components/contact';
 import Home from './components/home';
 import NavBar from './layouts/navBar/navBar';
@@ -23,17 +23,14 @@ function App() {
       <Routes>
         <Route path='/' element={ <NavBar />}>
          <Route index element={ <Home /> } />
-         <Route path='about' element={ <About /> } />
+         <Route path='products' element={ <Products /> } />
          <Route path='contact' element={ <Contact /> } />
         
         <Route path='*' element={ <Navigate replace to='/'/> }/>
         </Route>
       </Routes>
       </BrowserRouter>
-      <navBar />
-      <ItemListContainer/>
-      {/* < ItemCount initial ={1} stock={5} onAdd={onAdd} /> */}
-      <ItemDetailContainer/> 
+      <navBar /> 
     </div>
   
   );

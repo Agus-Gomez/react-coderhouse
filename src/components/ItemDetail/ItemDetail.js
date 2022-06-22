@@ -1,16 +1,30 @@
+import ItemCount from "../ItemCount/ItemCount";
+import '../item/cardItem.css';
 const ItemDetail = ({product}) => {
-    return (
-      <div className="row">
-        <div className="col-md-6">
-          <img src={product.pic} alt="" className="w-100" />
+   
+    const onAdd = (count) => {
+      alert(`agregaste ${count} productos a tu carrito`)
+    };
+  
+  
+  return (
+      <div className="col-md-4 p-1">
+        <div className="card w-100 mt-5 product-card">
+        <div className="card-header">
+            {`${product.name} - ${product.category}`}
+          </div>
+        <div className="card-body">
+          <img src={product.pic} alt="" className="w-50" />
         </div>
-        <div className="col-md-6">
-          <h2>Nombre: {product.name}</h2>
-          <h3>Categoria: {product.category}</h3>
-          <h4>Precio: {product.price}</h4>
+        <div>
+          <div className="units-container">
+          <h6 className="units-text">{product.stock} Unidades Disponibles</h6></div>
+          <h5>Precio: {product.price}</h5> 
+          < ItemCount stock={product.stock} initial ={1} onAdd={onAdd} />
+         
+        </div>
         </div>
       </div>
     );
-  };
-
-  export default ItemDetail
+};
+  export default ItemDetail;

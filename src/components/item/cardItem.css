@@ -11,6 +11,14 @@
     background-color: rgb(15 14 14 / 4%);
 }
 
+.units-container{
+   margin: auto;
+}
+
+.units-text{
+    text-align: center;
+}
+
 .detallebtn {
     margin: 10px 0 10px 10px;
     padding: 10px 20px;
