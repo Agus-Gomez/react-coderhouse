@@ -8,7 +8,8 @@ import Home from './components/home';
 import NavBar from './layouts/navBar/navBar';
 import ItemListContainer from './components/itemListContainer'
 import ItemDetailContainer from './components/ItemDetailContainer/itemDetailContainer.js';
-// import ItemCount from './components/ItemCount/ItemCount.js';
+import ItemCount from './components/ItemCount/ItemCount.js';
+import Cart from './components/cart/cart';
 function App() {
 
   // const onAdd = (quantity) => {
@@ -17,11 +18,16 @@ function App() {
 
 
   return (
+
+    
     <div className="App">
 
       <BrowserRouter>
       <Routes>
         <Route path='/' element={ <NavBar />}>
+        <Route path='/' element={ <ItemListContainer />}/> 
+        <Route path='/ItemDetail/:id' element={ <ItemDetailContainer />}/> 
+        <Route path='/cart' element={ <Cart />}/> 
          <Route index element={ <Home /> } />
          <Route path='products' element={ <Products /> } />
          <Route path='contact' element={ <Contact /> } />
@@ -30,7 +36,8 @@ function App() {
         </Route>
       </Routes>
       </BrowserRouter>
-      <navBar /> 
+      <navBar />
+      <ItemCount/>
     </div>
   
   );

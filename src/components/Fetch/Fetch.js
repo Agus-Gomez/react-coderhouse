@@ -34,16 +34,7 @@ export const getFetch = (id) => {
       } else {
         resolve(products);
       }
-    }, 3000);
-  });
-};
-
-export const getFetchOne = () => {
-  //acciones
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-        resolve(products.find((prod) => prod.id === '1'));
-    }, 3000);
+    }, 2000);
   });
 };
 
