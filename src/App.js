@@ -10,6 +10,7 @@ import ItemListContainer from './components/itemListContainer'
 import ItemDetailContainer from './components/ItemDetailContainer/itemDetailContainer.js';
 import ItemCount from './components/ItemCount/ItemCount.js';
 import Cart from './components/cart/cart';
+import CartContextProvider from './components/cartContext/CartContext'
 function App() {
 
   // const onAdd = (quantity) => {
@@ -19,9 +20,9 @@ function App() {
 
   return (
 
-    
+    <CartContextProvider>
     <div className="App">
-
+      
       <BrowserRouter>
       <Routes>
         <Route path='/' element={ <NavBar />}>
@@ -39,7 +40,7 @@ function App() {
       <navBar />
       <ItemCount/>
     </div>
-  
+    </CartContextProvider>
   );
 }
 

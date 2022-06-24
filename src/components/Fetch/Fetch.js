@@ -2,7 +2,7 @@ let products = [
   {
     id: "1",
     category: "Bazar",
-    name: "taza con tapa de Gato",
+    name: "taza con tapa de Gato1",
     stock: "3",
     price: 800,
     pic: "https://cdn.shopify.com/s/files/1/2249/9605/products/4202C8B4-F604-40C3-B86A-B03B4F941D5E_1024x1024@2x.jpg?v=1598365541",
@@ -10,7 +10,7 @@ let products = [
   {
     id: "2",
     category: "Bazar",
-    name: "taza con tapa de Gato",
+    name: "taza con tapa de Gato2",
     stock: "2",
     price: 1000,
     pic: "https://cdn.shopify.com/s/files/1/2249/9605/products/4202C8B4-F604-40C3-B86A-B03B4F941D5E_1024x1024@2x.jpg?v=1598365541",
@@ -18,7 +18,7 @@ let products = [
   {
     id: "3",
     category: "Bazar",
-    name: "taza con tapa de Gato",
+    name: "taza con tapa de Gato3",
     stock: "5",
     price: 1500,
     pic: "https://cdn.shopify.com/s/files/1/2249/9605/products/4202C8B4-F604-40C3-B86A-B03B4F941D5E_1024x1024@2x.jpg?v=1598365541",

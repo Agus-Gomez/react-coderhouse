@@ -16,7 +16,6 @@ export const ItemCount = ({initial, stock, onAdd}) => {
 
     const addProduct = () => {
         onAdd(count)
-        setShow(false)
     }
 
 //-- la cantidad de productos agregados al carrito se ve por consola --

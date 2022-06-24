@@ -17,7 +17,7 @@ function NavBar() {
         <Nav.Link as={Link} to='/contact'>Contact</Nav.Link>
       </Nav>
       <Form className="d-flex">
-      <Nav.Link as={Link} to=''><CartWidget/></Nav.Link>
+      <Nav.Link as={Link} to='/cart'><CartWidget/></Nav.Link>
       </Form>
     </Navbar.Collapse>
   </Container>
