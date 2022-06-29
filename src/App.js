@@ -11,17 +11,15 @@ import ItemDetailContainer from './components/ItemDetailContainer/itemDetailCont
 import ItemCount from './components/ItemCount/ItemCount.js';
 import Cart from './components/cart/cart';
 import CartContextProvider from './components/cartContext/CartContext'
+
+
+
 function App() {
 
-  // const onAdd = (quantity) => {
-  //   console.log(`Has agregado ${quantity} unidades`);
-  // }
-
-
   return (
-
-    <CartContextProvider>
+    
     <div className="App">
+    <CartContextProvider>
       
       <BrowserRouter>
       <Routes>
@@ -39,8 +37,8 @@ function App() {
       </BrowserRouter>
       <navBar />
       <ItemCount/>
-    </div>
     </CartContextProvider>
+    </div>
   );
 }
 

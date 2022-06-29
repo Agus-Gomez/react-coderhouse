@@ -1,8 +1,14 @@
-import {Navbar, Container, Nav, Form,} from 'react-bootstrap'
+import {Navbar, Container, Nav, Form, Badge} from 'react-bootstrap'
 import {Outlet, Link} from 'react-router-dom';
 import CartWidget from '../../components/cartWidget';
+import { useCartContext } from '../../components/cartContext/CartContext';
 
-function NavBar() {
+import {LinkContainer} from 'react-router-bootstrap';
+
+const NavBar = () => {
+
+  const {IconCart, cartList} = useCartContext ()
+
   return ( 
   <>
   <Navbar className='navBg' variant='light' expand="lg">
@@ -17,7 +23,18 @@ function NavBar() {
         <Nav.Link as={Link} to='/contact'>Contact</Nav.Link>
       </Nav>
       <Form className="d-flex">
-      <Nav.Link as={Link} to='/cart'><CartWidget/></Nav.Link>
+        {cartList.length !== 0 ? (
+<LinkContainer to='/cart'>
+          <button variant="danger">
+            <CartWidget/>
+            <Badge bg="primary">
+              {cartList.length === 0 ? 0 : IconCart()}</Badge>
+          </button>
+        </LinkContainer>
+        ) : (
+          <></>
+        )
+        }
       </Form>
     </Navbar.Collapse>
   </Container>

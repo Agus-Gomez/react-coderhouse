@@ -1,34 +1,48 @@
 import ItemCount from "../ItemCount/ItemCount";
-import { React, useState, useEffect, useContext} from "react";
-import '../item/cardItem.css';
+import { React, useState, useEffect, useContext } from "react";
+import "../item/cardItem.css";
 import { CartContext } from "../cartContext/CartContext";
+import { Link } from "react-router-dom";
+const ItemDetail = ({ product }) => {
+  const { AddToCart } = useContext(CartContext);
 
-const ItemDetail = ({product}) => {
-    const { AddToCart } = useContext(CartContext)
-    
-    const onAdd = (count) => {
-      AddToCart(product, count)
-    };
-  
-  
+  const [addedToCart, setAddedToCart] = useState(false);
+
+  const onAdd = (count) => {
+    AddToCart(product, count);
+  };
+
   return (
-      <div className="col-md-4 p-1">
-        <div className="card w-100 mt-5 product-card">
+    <div className="col-md-4 p-1">
+      <div className="card w-100 mt-5 product-card">
         <div className="card-header">
-            {`${product.name} - ${product.category}`}
-          </div>
+          {`${product.name} - ${product.category}`}
+        </div>
         <div className="card-body">
           <img src={product.pic} alt="" className="w-50" />
         </div>
         <div>
           <div className="units-container">
-          <h6 className="units-text">{product.stock} Unidades Disponibles</h6></div>
-          <h5>Precio: {product.price}</h5> 
-          < ItemCount stock={product.stock} initial ={1} onAdd={onAdd} />
-         
-        </div>
+            <h6 className="units-text">{product.stock} Unidades Disponibles</h6>
+          </div>
+          <h5>Precio: {product.price}</h5>
+          {addedToCart ? (
+            <>
+              <Link className="btn btn-outline-primary btn-block detallebtn" to="/cart">
+                Terminar mi compra
+              </Link>
+            </>
+          ) : (
+            <ItemCount
+              stock={product.stock}
+              initial={1}
+              onAdd={onAdd}
+              setAddedToCart={setAddedToCart}
+            />
+          )}
         </div>
       </div>
-    );
+    </div>
+  );
 };
-  export default ItemDetail;
+export default ItemDetail;

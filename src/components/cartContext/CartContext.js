@@ -1,27 +1,32 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
-export const CartContext = createContext([]);
+//Creo el contexto y lo guardo en la variable CartContext.
+export const CartContext = createContext([]); //revisar por qué se rompe al sacar el export.
 
-const CartContextProvider = ({ children }) => {
+export const useCartContext = () => useContext(CartContext);
+
+export const CartContextProvider = ({ children }) => {
+  
   const [cartList, setCartList] = useState([]);
 
   const AddToCart = (product, count) => {
-    if (IsInCart(product.id)) {
-      alert("El producto ya se encuentra en el carrito");
-    } else {
-      setCartList([...cartList, { product, count }]);
-      alert("Se ha agregado el producto correctamente");
-    }
+
+    let prevCart = [...cartList];
+
+    if (prevCart.some((i)=> i.product.id === product.id))
+        {
+        prevCart.find((i)=> i.product.id === product.id).count += count;
+        setCartList(prevCart);
+        } else {
+          setCartList([...cartList, {product, count}]);
+        }
   };
 
+  //borrar 1 item del carrito
 const DelItem = (id) => {
     const items = cartList.filter((i)=>i.product.id !== id)
     setCartList(items)
     return 
-}
-
-const IconCart = () => {
-    return cartList.reduce((acum, i)=> acum + i.count, 0)
 }
 
 
@@ -29,19 +34,28 @@ const TotalPrice = () => {
     return cartList.reduce((acum, i) => acum + i.count * i.product.price, 0)
 }
 
-
-
-
+//borrar el carrito entero
 const EmptyCart = () => {
     setCartList ([])
 }
-
+//para que no supere el stock al agregar al carrito.
   const IsInCart = (id) => {
-    return cartList && cartList.some((i) => i.product.id === id);
+    return cartList && cartList.some((i) => i.product.id === id && i.product.stock === i.count);
   };
 
+  const IconCart = () => cartList.reduce((acum, i)=> acum + i.count, 0);
+
+
   return (
-    <CartContext.Provider value={{ AddToCart, cartList, EmptyCart, DelItem, TotalPrice, IconCart }}>
+    <CartContext.Provider
+    value={{ 
+      AddToCart, 
+      cartList, 
+      EmptyCart, 
+      DelItem, 
+      TotalPrice, 
+      IconCart }}
+      >
       {children}
     </CartContext.Provider>
   );

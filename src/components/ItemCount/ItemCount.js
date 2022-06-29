@@ -1,7 +1,7 @@
 import './ItemCount.css'
 import React,{useState} from 'react';
 
-export const ItemCount = ({initial, stock, onAdd}) => {
+export const ItemCount = ({initial, stock, onAdd, setAddedToCart}) => {
     const [count, setCount] = useState(initial);
 
     const [show, setShow] = useState(true);
@@ -16,6 +16,7 @@ export const ItemCount = ({initial, stock, onAdd}) => {
 
     const addProduct = () => {
         onAdd(count)
+        setAddedToCart(true);
     }
 
 //-- la cantidad de productos agregados al carrito se ve por consola --
