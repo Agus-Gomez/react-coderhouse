@@ -1,23 +1,31 @@
 import { useEffect, useState } from "react";
 import ItemList from "./itemList/itemList";
+import { collection, getDocs, getFirestore, query, where} from 'firebase/firestore';
 import { useParams } from "react-router-dom";
-import { getFetch } from "./Fetch/Fetch";
 
 const ItemListContainer = () => {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const { id } = useParams();
 
+const [products, setProducts] = useState([]);
+const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    // llamo a la api
-    getFetch()
-      .then((resp) => {
-        setProducts(resp);
-        setLoading(false);
-      })
-      .catch((err) => console.log(err));
-  }, [id]);
+const { categoriesId } = useParams()
+
+useEffect(() => {
+  const db = getFirestore()
+  const queryCollection = collection(db, 'Products')
+  let finalQuery = queryCollection;
+  if (categoriesId) {
+    finalQuery = query(queryCollection, where('Categories', '==', categoriesId))
+  }
+  
+  
+  getDocs(finalQuery)
+  .then( data => setProducts( data.docs.map(item => ( { id: item.id, ...item.data() } ) ) ) )
+  .catch(err => console.log(err))
+  .finally(() => setLoading(false))
+}, [])
+
+console.log(products)
 
   return (
     <div>

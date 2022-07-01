@@ -3,11 +3,21 @@ import { CartContext } from "../cartContext/CartContext";
 
 const CartItem = ({ product }) => {
   const { DelItem } = useContext(CartContext);
-  const { name, price, id } = product;
+  const { Name, Pic, id, Categories } = product;
   return (
     <div>
-      <h4>{name}</h4>
-      <button onClick={() => DelItem(id)}>Borrar producto</button>
+      <div className="col-md-3 product-card-container">
+        <div className="card w-100 mt-5 product-card">
+          <div className="card-header">
+            {`${Name} - ${Categories}`}
+          </div>
+          <div className="card-body">
+            <img src={Pic} alt="" className="w-50" />
+          </div>
+          <button onClick={() => DelItem(id)}>Borrar producto</button>
+        </div>
+      </div>
+     
     </div>
   );
 };

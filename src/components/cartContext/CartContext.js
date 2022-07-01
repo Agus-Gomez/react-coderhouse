@@ -31,7 +31,7 @@ const DelItem = (id) => {
 
 
 const TotalPrice = () => {
-    return cartList.reduce((acum, i) => acum + i.count * i.product.price, 0)
+    return cartList.reduce((acum, i) => acum + i.count * i.product.Price, 0)
 }
 
 //borrar el carrito entero

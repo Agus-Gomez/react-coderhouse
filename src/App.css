@@ -75,3 +75,7 @@
     letter-spacing:normal; 
   }
 
+  .product-card-container {
+    margin: auto;
+  }
+
