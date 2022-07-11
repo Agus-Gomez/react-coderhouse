@@ -9,7 +9,7 @@ const CartItem = ({ product }) => {
       <div className="col-md-3 product-card-container">
         <div className="card w-100 mt-5 product-card">
           <div className="card-header">
-            {`${Name} - ${Categories}`}
+            {`${Name}`}
           </div>
           <div className="card-body">
             <img src={Pic} alt="" className="w-50" />
