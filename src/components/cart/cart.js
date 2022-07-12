@@ -70,18 +70,12 @@ const Cart = () => {
 
   return (
     <>
-      {cartList.length < 1 ? (
+    { ( GetLastOrder() == "" || !GetLastOrder() ) ? (
+      <>
+      {cartList.length < 1 ?  (
         <div className=" d-flex justify-content-center flex-column align-items-center mt-5">
           <h1 className="text-center">Carrito de Compras</h1>
           <p className="text-center">Oops El carrito esta Vacío</p>
-
-          <div>
-            <Link to="../products">
-              <button className="btn btn-outline-primary btn-block detallebtn">
-                ver más productos
-              </button>
-            </Link>
-          </div>
         </div>
       ) : (
         <>
@@ -98,8 +92,8 @@ const Cart = () => {
             <button onClick={generateOrder}>Terminar Compra</button>
           </div>
         </>
-      )}
-
+      )}</>) : (
+        <>
       {GetLastOrder() && GetLastOrder() !== "" ? (
         <div>
           <h1>
@@ -110,7 +104,15 @@ const Cart = () => {
         </div>
       ) : (
         <></>
-      )}
+      )}</>)
+      }
+      <div>
+            <Link to="../products">
+              <button className="btn btn-outline-primary btn-block detallebtn">
+                ver más productos
+              </button>
+            </Link>
+          </div>
     </>
   );
 };
