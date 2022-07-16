@@ -1,7 +1,7 @@
 import {Navbar, Container, Nav, Form, Badge} from 'react-bootstrap'
 import {Outlet, Link} from 'react-router-dom';
-import CartWidget from '../../components/cartWidget';
-import { useCartContext } from '../../components/cartContext/CartContext';
+import CartWidget from '../../Images/CartIcon';
+import { useCartContext } from '../../contexts/CartContext';
 
 import {LinkContainer} from 'react-router-bootstrap';
 

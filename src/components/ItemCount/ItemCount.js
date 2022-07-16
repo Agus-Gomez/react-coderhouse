@@ -19,7 +19,6 @@ export const ItemCount = ({initial, stock, onAdd, setAddedToCart}) => {
         setAddedToCart(true);
     }
 
-//-- la cantidad de productos agregados al carrito se ve por consola --
     if (show&&stock>0) {
     return (
         <div className="counter">

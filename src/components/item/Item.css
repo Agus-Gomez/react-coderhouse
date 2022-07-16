@@ -1,6 +1,7 @@
 .card {
     background-color: #e5e2cf;
     border-radius: 1rem;
+    text-align: center;
 }
 
 .card-footer:last-child {
@@ -38,3 +39,4 @@
     img{
         border-radius: 1rem;
     }
+

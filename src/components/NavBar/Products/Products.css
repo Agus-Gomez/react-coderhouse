@@ -1,0 +1,35 @@
+.shop-page-title-inner {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    padding-top: 20px;
+    min-height: 60px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: 100px;    
+    margin-right: 100px;    
+}
+
+.flex-grow {
+    flex: 1;
+}
+
+.textCategoriesContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* aspecto de filtro */
+.filter-button {
+    text-decoration: none;
+    color:#566e94;
+}
+
+
+/* titulo de busqueda de productos */
+.store-title {
+    color:#566e94;
+    font-weight: 700;
+    font-size: 1.3rem;
+}

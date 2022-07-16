@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { CartContext } from "../cartContext/CartContext";
-
+import { CartContext } from "../../contexts/CartContext";
+//esto es la card del producto agregado al carrito al momento de entrar ahí para terminar la compra
 const CartItem = ({ product }) => {
   const { DelItem } = useContext(CartContext);
   const { Name, Pic, id, Categories } = product;
