@@ -1,7 +1,6 @@
 import { createContext, useContext, useState } from "react";
 
-//Creo el contexto y lo guardo en la variable CartContext.
-export const CartContext = createContext([]); //revisar por qué se rompe al sacar el export.
+export const CartContext = createContext([]);
 
 export const useCartContext = () => useContext(CartContext);
 

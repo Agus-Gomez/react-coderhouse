@@ -16,7 +16,10 @@ const ItemDetail = ({ product }) => {
 
 
   return (
-    <div className="col-md-4 p-1">
+    <>
+    {product.Categories ? (
+      <>
+      <div className="col-md-4 p-1">
       <div className="card w-100 mt-5 product-card">
         <div className="card-header">
           {`${product.Name} - ${product.Categories}`}
@@ -25,6 +28,11 @@ const ItemDetail = ({ product }) => {
           <img src={product.Pic} alt="" className="w-50" />
         </div>
         <div>
+
+          <div>
+            <h6 className="units-text">{product.Description}</h6>
+          </div>
+
           <div className="units-container">
             <h6 className="units-text">{product.Stock} Unidades Disponibles</h6>
           </div>
@@ -46,6 +54,23 @@ const ItemDetail = ({ product }) => {
         </div>
       </div>
     </div>
+      </>
+    ):(
+      <>
+      <h1>
+        Lo sentimos, este producto que buscas no se encuentra disponible, intenta con otro!
+      </h1>
+       <div>
+       <Link to="/products">
+         <button className="btn btn-outline-primary btn-block detallebtn">
+           ver más productos
+         </button>
+       </Link>
+     </div>
+     </>
+    )}
+    
+    </>
   );
 };
 export default ItemDetail;

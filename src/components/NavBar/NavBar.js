@@ -1,4 +1,4 @@
-import {Navbar, Container, Nav, Form, Badge} from 'react-bootstrap'
+import {Navbar, Container, Nav, Form, Badge, NavDropdown} from 'react-bootstrap'
 import {Outlet, Link} from 'react-router-dom';
 import CartWidget from '../../Images/CartIcon';
 import { useCartContext } from '../../contexts/CartContext';
@@ -19,8 +19,20 @@ const NavBar = () => {
       <Nav
         className="me-auto my-2 my-lg-0" style={{ maxHeight: '100px' }} navbarScroll>
         <Nav.Link as={Link} to='/'>Home</Nav.Link>
-        <Nav.Link as={Link} to='/products'>Productos</Nav.Link>
-        <Nav.Link as={Link} to='/contact'>Contact</Nav.Link>
+        <Nav.Link as={Link} to='/contact'>Contacto</Nav.Link>
+
+        <NavDropdown title="Productos" id="basic-nav-dropdown">
+              <NavDropdown.Item href="/categorias/Botellas">Botellas/Termos</NavDropdown.Item>
+              <NavDropdown.Item href="/categorias/Lamparas">
+                Lámparas de noche
+              </NavDropdown.Item>
+              <NavDropdown.Item href="/categorias/Tazas">Tazas</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="/products">
+                Ver todo
+              </NavDropdown.Item>
+            </NavDropdown>
+
       </Nav>
       <Form className="d-flex">
         {cartList.length !== 0 ? (

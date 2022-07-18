@@ -32,8 +32,9 @@ const Cart = () => {
       const id = cartItem.product.id;
       const name = cartItem.product.Name;
       const price = cartItem.product.Price * cartItem.count;
+      const quantity = cartItem.count;
 
-      return { id, name, price };
+      return { id, name, price, quantity };
     });
 
     const db = getFirestore();
@@ -70,49 +71,52 @@ const Cart = () => {
 
   return (
     <>
-    { ( GetLastOrder() == "" || !GetLastOrder() ) ? (
-      <>
-      {cartList.length < 1 ?  (
-        <div className=" d-flex justify-content-center flex-column align-items-center mt-5">
-          <h1 className="text-center">Carrito de Compras</h1>
-          <p className="text-center">Oops El carrito esta Vacío</p>
-        </div>
-      ) : (
+      {GetLastOrder() == "" || !GetLastOrder() ? (
         <>
-          {cartList.map((i) => (
-            <CartItem key={i.product.id} product={i.product} />
-          ))}
+          {cartList.length < 1 ? (
+            <div className=" d-flex justify-content-center flex-column align-items-center mt-5">
+              <h1 className="text-center">Carrito de Compras</h1>
+              <p className="text-center">Oops El carrito esta Vacío</p>
+            </div>
+          ) : (
+            <>
+              {cartList.map((i) => (
+                <CartItem key={i.product.id} product={i.product} count={i.count}/>
+              ))}
 
-          <button onClick={EmptyCart}>Borrar mis productos</button>
+              <button onClick={EmptyCart}>Borrar mis productos</button>
 
-          <p>El precio total de tus productos es: {TotalPrice()}</p>
-          <p>La cantidad total del carrito es {IconCart()}</p>
+              <p>El precio total de tus productos es: {TotalPrice()}</p>
+              <p>La cantidad total del carrito es {IconCart()}</p>
 
-          <div>
-            <button onClick={generateOrder}>Terminar Compra</button>
-          </div>
+              <div>
+                <button onClick={generateOrder}>Terminar Compra</button>
+              </div>
+            </>
+          )}
         </>
-      )}</>) : (
-        <>
-      {GetLastOrder() && GetLastOrder() !== "" ? (
-        <div>
-          <h1>
-            Muchas gracias por tu compra! usa el código debajo para seguir el
-            envío de tu paquete:
-          </h1>
-          <p>{GetLastOrder()}</p>
-        </div>
       ) : (
-        <></>
-      )}</>)
-      }
+        <>
+          {GetLastOrder() && GetLastOrder() !== "" ? (
+            <div>
+              <h1>
+                Muchas gracias por tu compra! usa el código debajo para seguir
+                el envío de tu paquete:
+              </h1>
+              <p>{GetLastOrder()}</p>
+            </div>
+          ) : (
+            <></>
+          )}
+        </>
+      )}
       <div>
-            <Link to="../products">
-              <button className="btn btn-outline-primary btn-block detallebtn">
-                ver más productos
-              </button>
-            </Link>
-          </div>
+        <Link to="../products">
+          <button className="btn btn-outline-primary btn-block detallebtn">
+            ver más productos
+          </button>
+        </Link>
+      </div>
     </>
   );
 };
