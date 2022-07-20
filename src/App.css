@@ -1,5 +1,3 @@
-
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -36,18 +34,18 @@
 }
 
 /* estilos de navBar */
-.navBg{
+.navBg {
   background-color: #f7f7f7;
 }
 
-.d-flex icon{
+.d-flex icon {
   color: rgb(0, 0, 0);
 }
 
 /* home background*/
 
 .welcome-section {
-  background-image: url("./components/img/home/catcafeblack.jpg");
+  background-image: url("https://c.stocksy.com/a/e5Y300/z9/846030.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -60,21 +58,19 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%; 
+  height: 100%;
 }
 
 .welcome-headline {
-    color: #fffffff8;
-    text-align: center;
-    padding-top: 20vh;
-    font-size: 8rem;
-    font-style: normal;
-    font-weight: 600;
-    letter-spacing:normal; 
-  }
+  color: #fffffff8;
+  text-align: center;
+  padding-top: 20vh;
+  font-size: 8rem;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: normal;
+}
 
-  .product-card-container {
-    margin: auto;
-  }
- 
-
+.product-card-container {
+  margin: auto;
+}

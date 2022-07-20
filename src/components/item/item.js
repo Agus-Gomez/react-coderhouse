@@ -3,8 +3,9 @@ import './Item.css'
 
 const Item = ({prod}) => {
     return (
-      <div className="col-md-4 p-1">
-        <div className="card w-100 mt-5 product-card">
+     
+      
+        <div className="cardItem mt-5 mb-2">
           <div className="card-header">
             {`${prod.Name}`}
           </div>
@@ -13,13 +14,14 @@ const Item = ({prod}) => {
           </div>
           <div className="card-footer">
             <Link to={`/ItemDetail/${prod.id}`}>
-            <button className="btn btn-outline-primary btn-block detallebtn">
+            <button>
               detalle del producto
             </button>
             </Link>
           </div>
         </div>
-      </div>
+      
+    
     )
   }
 

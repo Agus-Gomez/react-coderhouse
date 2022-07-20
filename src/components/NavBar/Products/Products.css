@@ -1,14 +1,4 @@
-.shop-page-title-inner {
-    display: flex;
-    position: relative;
-    flex-direction: row;
-    padding-top: 20px;
-    min-height: 60px;
-    padding-left: 15px;
-    padding-right: 15px;
-    margin-left: 100px;    
-    margin-right: 100px;    
-}
+
 
 .flex-grow {
     flex: 1;
@@ -32,4 +22,16 @@
     color:#566e94;
     font-weight: 700;
     font-size: 1.3rem;
+    margin-left: 5%; 
+}
+
+.cardsProducts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 70%;
+    padding-top: 20px;
+    min-height: 60px;
+    margin: auto;
+    align-items: center; 
 }

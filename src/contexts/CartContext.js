@@ -1,5 +1,6 @@
 import { createContext, useContext, useState } from "react";
 
+
 export const CartContext = createContext([]);
 
 export const useCartContext = () => useContext(CartContext);
@@ -36,14 +37,12 @@ export const CartContextProvider = ({ children }) => {
     setCartList([]);
   };
 
-  const IconCart = () => cartList.reduce((acum, i) => acum + i.count, 0);
+  const CartQuantity = () => cartList.reduce((acum, i) => acum + i.count, 0);
 
-  //para hacer el set del trackingOrder
   const SetLastOrder = (id) => {
     setTrackingOrder(id);
   };
 
-  //para traer el trackingOrder
   const GetLastOrder = () => {
     return trackingOrder;
   };
@@ -56,7 +55,7 @@ export const CartContextProvider = ({ children }) => {
         EmptyCart,
         DelItem,
         TotalPrice,
-        IconCart,
+        CartQuantity,
         SetLastOrder,
         GetLastOrder,
       }}

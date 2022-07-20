@@ -1,0 +1,130 @@
+.form-container {
+  margin: 0 auto;
+  width: 50%;
+}
+
+.form__name {
+  color: #b9bac5;
+  padding: 10px;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 700;
+  margin-top: 60px;
+  margin-left: 25%;
+}
+
+.form__container {
+  width: 80%;
+  min-height: 300px;
+  background-color: #fff;
+  border: 1px solid #dadde8;
+  border-radius: 5px;
+  padding: 30px;
+  margin: auto; 
+   margin-bottom: 100px;
+}
+
+.personal--form {
+  color: #a4a9c5;
+  font-size: 0.7rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+.personal--form .last {
+  margin-left: 10px;
+}
+
+.personal--form .first,
+.personal--form .last,
+.email,
+.phone-number {
+  display: inline-block;
+}
+.personal--form .first label,
+.personal--form .last label,
+.email label,
+.phone-number label {
+  margin-bottom: 10px;
+}
+.personal--form .first label,
+.personal--form .first input,
+.personal--form .last label,
+.personal--form .last input,
+.email label,
+.email input,
+.phone-number label,
+.phone-number input {
+  display: block;
+  min-width: 250px;
+}
+.personal--form .email, .phone-number {
+  margin-top: 20px;
+}
+.personal--form .email input {
+  width: 510px;
+}
+
+.form__personal {
+  margin-top: 50px;
+}
+
+input {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  background: transparent;
+  border: 1px solid #a4a9c5;
+  border-radius: 3px;
+  outline: none;
+  padding: 10px;
+  transition: border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  color: #18c2c0;
+}
+input:-webkit-autofill {
+  -webkit-text-fill-color: #18c2c0;
+}
+input:focus {
+  border-color: #18c2c0;
+}
+input::placeholder {
+  font-weight: 500;
+  color: #646e8a;
+}
+
+.form__confirmation {
+  padding: 10px 55px;
+}
+
+.box {
+  cursor: default;
+  user-select: none;
+  display: inline-block;
+  font-size: 1.5rem;
+  font-weight: 400;
+  height: 40px;
+  width: 40px;
+  line-height: 35px;
+  border-radius: 50px;
+  border: 2px solid #646e8a;
+  text-align: center;
+  color: #646e8a;
+}
+.box.billing {
+  line-height: 30px;
+}
+
+.sections span {
+  color: #646e8a;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin-left: 15px;
+}
+
+.form-button {
+  margin-top: 5%;
+}

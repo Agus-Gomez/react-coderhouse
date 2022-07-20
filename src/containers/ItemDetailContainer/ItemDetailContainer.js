@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import ItemDetail from "../../components/ItemDetail/ItemDetail";
 import { useParams } from "react-router-dom";
-
+import  Spinner  from "../../Images/Spinner/Spinner";
 import { doc, getDoc, getFirestore } from 'firebase/firestore';
-
 
 
 const ItemDetailContainer = () => {
@@ -26,11 +25,15 @@ const ItemDetailContainer = () => {
     }, [bool])
 
 
-
   return (
     <div>
+      
       {loading ? (
-        <h1>Cargando información del producto ...</h1>
+        <>
+        <div className="pos-center">
+      <Spinner />
+    </div>
+        </>
       ) : (
         <div
           style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}

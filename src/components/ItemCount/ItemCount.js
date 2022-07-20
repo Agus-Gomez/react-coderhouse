@@ -21,10 +21,10 @@ export const ItemCount = ({initial, stock, onAdd, setAddedToCart}) => {
 
     if (show&&stock>0) {
     return (
-        <div className="counter">
-            <button disabled={count <= 1} onClick={decrease}>-</button>
-            <span>{count}</span>
-            <button disabled={count >= stock} onClick={increase}>+</button>
+        <div className="counter-container">
+            <button className="minus-button" disabled={count <= 1} onClick={decrease}>-</button>
+            <span> {count} </span>
+            <button className="plus-button" disabled={count >= stock} onClick={increase}>+</button>
             <div>
                 <button disabled={stock <=0} onClick={addProduct}>Agregar al carrito</button>
             </div>

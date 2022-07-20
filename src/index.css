@@ -2,16 +2,20 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-} 
- body {
-  font-family: 'DM Sans', sans-serif !important;
+}
+body {
+  font-family: "DM Sans", sans-serif !important;
   line-height: 1.6;
 }
 row {
   --bs-gutter-x: 0rem !important;
 }
-/*
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-} */
+
+.navbar-brand {
+  padding-top: 0 !important;
+}
+
+.logo:hover {
+  cursor: pointer;
+  background-color: #c0eceb;
+}

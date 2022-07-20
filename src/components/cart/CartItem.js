@@ -1,27 +1,28 @@
 import { useContext } from "react";
 import { CartContext } from "../../contexts/CartContext";
-//esto es la card del producto agregado al carrito al momento de entrar ahí para terminar la compra
+
+//card de carrito
 const CartItem = ({ product, count }) => {
   const { DelItem } = useContext(CartContext);
-  const { Name, Pic, id} = product;
+  const { Name, Pic, id } = product;
   return (
-    <div>
-      <div className="col-md-3 product-card-container">
-        <div className="card w-100 mt-5 product-card">
-          <div className="card-header">
-            {Name}
-          </div>
-          <div className="card-body">
-            <img src={Pic} alt="" className="w-50" />
-          </div>
-          <div className="card-text">
-            <h3>{count}</h3>
-          </div>
-          <button onClick={() => DelItem(id)}>Borrar producto</button>
+    <>
+
+      <div className="mdl-card mdl-shadow--2dp mdl-card--horizontal-2">
+        <div className="mdl-card__media">
+          <img src={Pic} alt="img" />
+        </div>
+        <div className="mdl-card__title">
+          <p className="mdl-card__title-text">{Name}</p>
+          <div> x {count}</div>
+        </div>
+        <div className="mdl-card__actions mdl-card--border">
+          <button className="deleteProductButton" onClick={() => DelItem(id)}>
+            Borrar producto
+          </button>
         </div>
       </div>
-     
-    </div>
+    </>
   );
 };
 

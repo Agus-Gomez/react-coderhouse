@@ -1,40 +1,44 @@
 import { useEffect, useState } from "react";
 import ItemList from "../../components/ItemList/ItemList";
-import { collection, getDocs, getFirestore, query, where} from 'firebase/firestore';
+import { collection, getDocs, getFirestore, query, where, } from "firebase/firestore";
 import { useParams } from "react-router-dom";
+import Spinner from "../../Images/Spinner/Spinner.js";
 
 const ItemListContainer = () => {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-const [products, setProducts] = useState([]);
-const [loading, setLoading] = useState(true);
+  const { categoriesId } = useParams();
 
-const { categoriesId } = useParams()
+  useEffect(() => {
+    const db = getFirestore();
+    const queryCollection = collection(db, "Products");
+    let finalQuery = queryCollection;
+    if (categoriesId) {
+      finalQuery = query(
+        queryCollection,
+        where("Categories", "==", categoriesId)
+      );
+    }
 
-useEffect(() => {
-  const db = getFirestore()
-  const queryCollection = collection(db, 'Products')
-  let finalQuery = queryCollection;
-  if (categoriesId) {
-    finalQuery = query(queryCollection, where('Categories', '==', categoriesId))
-  }
-  
-  
-  getDocs(finalQuery)
-  .then( data => setProducts( data.docs.map(item => ( { id: item.id, ...item.data() } ) ) ) )
-  .catch(err => console.log(err))
-  .finally(() => setLoading(false))
-}, [])
+    getDocs(finalQuery)
+      .then((data) =>
+        setProducts(data.docs.map((item) => ({ id: item.id, ...item.data() })))
+      )
+      .catch((err) => console.log(err))
+      .finally(() => setLoading(false));
+  }, []);
   return (
-    <div>
+    <div className="cardsProducts">
       {loading ? (
-        <h1>Cargando productos...</h1>
+        <>
+            <div className="pos-center">
+              <Spinner />
+            </div>
+        </>
       ) : (
-        <div
-          style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}
-        >
+        
           <ItemList products={products} />
-         
-        </div>
       )}
     </div>
   );

@@ -1,7 +1,10 @@
 import { useContext, useState } from "react";
 import { CartContext } from "../../contexts/CartContext";
 import CartItem from "./CartItem";
+import ContactForm from "./ContactForm/ContactForm";
 import { Link } from "react-router-dom";
+import Spinner from "../../Images/Spinner/Spinner";
+import "./Cart.css";
 import {
   addDoc,
   collection,
@@ -18,15 +21,22 @@ const Cart = () => {
     cartList,
     EmptyCart,
     TotalPrice,
-    IconCart,
+    CartQuantity,
     SetLastOrder,
     GetLastOrder,
   } = useContext(CartContext);
 
-  async function generateOrder(e) {
-    e.preventDefault();
+  const [loading, setLoading] = useState(false);
+
+  async function generateOrder(data) {
+    setLoading(true);
     let order = {};
-    order.buyer = { name: "Agus", email: "agus@gmail.com", phone: "123456789" };
+    order.buyer = {
+      name: data.name,
+      lastName: data.lastName,
+      phone: data.phone,
+      email: data.email,
+    };
     order.total = TotalPrice();
     order.items = cartList.map((cartItem) => {
       const id = cartItem.product.id;
@@ -39,7 +49,7 @@ const Cart = () => {
 
     const db = getFirestore();
     const orderCollection = collection(db, "orders");
-    addDoc(orderCollection, order).then((resp) => SetLastOrder(resp.id)); //modificar este console.log para que traiga toda la info del cliente
+    await addDoc(orderCollection, order).then((resp) => SetLastOrder(resp.id));
 
     const queryCollectionStock = collection(db, "Products");
 
@@ -64,59 +74,84 @@ const Cart = () => {
           })
         )
       )
-      .finally(() => EmptyCart());
+      .finally(() => {
+        EmptyCart();
+        setLoading(false);
+      });
 
     batch.commit();
   }
 
   return (
     <>
-      {GetLastOrder() == "" || !GetLastOrder() ? (
+      {loading ? (
         <>
-          {cartList.length < 1 ? (
-            <div className=" d-flex justify-content-center flex-column align-items-center mt-5">
-              <h1 className="text-center">Carrito de Compras</h1>
-              <p className="text-center">Oops El carrito esta Vacío</p>
-            </div>
-          ) : (
-            <>
-              {cartList.map((i) => (
-                <CartItem key={i.product.id} product={i.product} count={i.count}/>
-              ))}
-
-              <button onClick={EmptyCart}>Borrar mis productos</button>
-
-              <p>El precio total de tus productos es: {TotalPrice()}</p>
-              <p>La cantidad total del carrito es {IconCart()}</p>
-
-              <div>
-                <button onClick={generateOrder}>Terminar Compra</button>
-              </div>
-            </>
-          )}
+          <div className="pos-center">
+            <Spinner />
+          </div>
         </>
       ) : (
         <>
-          {GetLastOrder() && GetLastOrder() !== "" ? (
-            <div>
-              <h1>
-                Muchas gracias por tu compra! usa el código debajo para seguir
-                el envío de tu paquete:
-              </h1>
-              <p>{GetLastOrder()}</p>
-            </div>
+          {GetLastOrder() == "" || !GetLastOrder() ? (
+            <>
+              {cartList.length < 1 ? (
+                <div className=" d-flex justify-content-center flex-column align-items-center mt-5">
+                  <h1 className="text-center">Carrito de Compras</h1>
+                  <p className="text-empty">El carrito esta Vacío</p>
+                  <Link to="../products">
+                    <button className="form-button" type="submit">
+                      Ver más productos
+                    </button>
+                  </Link>
+                </div>
+              ) : (
+                <>
+                  <div className="containerFlex">
+                    <ContactForm
+                      firebaseMethod={generateOrder}
+                      totalPrice={TotalPrice()}
+                      cartQuantity={CartQuantity()}
+                    />
+
+                    <div className="cart-card-container">
+                      <button className="delete-all-btn" onClick={EmptyCart}>
+                        Borrar todos mis productos
+                      </button>
+
+                      {cartList.map((i) => (
+                        <CartItem
+                          key={i.product.id}
+                          product={i.product}
+                          count={i.count}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                </>
+              )}
+            </>
           ) : (
-            <></>
+            <>
+              {GetLastOrder() && GetLastOrder() !== "" ? (
+                <div className="thanks-container">
+                  <p className="thanksText">
+                    Muchas gracias por tu compra! usa el código debajo para
+                    seguir el envío de tu paquete:
+                  </p>
+                  <p className="orderNumberText">{GetLastOrder()}</p>
+                  <Link to="../products">
+                    <button className="form-button" type="submit">
+                      Ver más productos
+                    </button>
+                  </Link>
+                </div>
+              ) : (
+                <></>
+              )}
+            </>
           )}
         </>
       )}
-      <div>
-        <Link to="../products">
-          <button className="btn btn-outline-primary btn-block detallebtn">
-            ver más productos
-          </button>
-        </Link>
-      </div>
     </>
   );
 };
