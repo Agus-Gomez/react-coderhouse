@@ -139,7 +139,7 @@ const Cart = () => {
                     seguir el envío de tu paquete:
                   </p>
                   <p className="orderNumberText">{GetLastOrder()}</p>
-                  <Link to="../products">
+                  <Link to="/products">
                     <button className="form-button" type="submit">
                       Ver más productos
                     </button>

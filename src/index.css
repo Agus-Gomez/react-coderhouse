@@ -19,3 +19,8 @@ row {
   cursor: pointer;
   background-color: #c0eceb;
 }
+
+a {
+  text-decoration: none !important;
+
+}

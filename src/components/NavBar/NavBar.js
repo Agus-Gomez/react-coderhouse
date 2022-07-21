@@ -22,17 +22,23 @@ const NavBar = () => {
               navbarScroll
             >
               <NavDropdown title="Productos" id="basic-nav-dropdown">
-                <NavDropdown.Item href="/categorias/Botellas">
+      
+                <NavDropdown.Item href="/react-coderhouse/categorias/Botellas">
                   Botellas/Termos
                 </NavDropdown.Item>
-                <NavDropdown.Item href="/categorias/Lamparas">
+
+                <NavDropdown.Item href="/react-coderhouse/categorias/Lamparas">
                   Lámparas de noche
                 </NavDropdown.Item>
-                <NavDropdown.Item href="/categorias/Tazas">
+
+                <NavDropdown.Item href="/react-coderhouse/categorias/Tazas">
                   Tazas
-                </NavDropdown.Item>
+                </NavDropdown.Item> 
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="/products">Ver todo</NavDropdown.Item>
+
+                <NavDropdown.Item href="/react-coderhouse/products">
+                  Ver todo
+                  </NavDropdown.Item>
               </NavDropdown>
             </Nav>
             <Form className="d-flex">
