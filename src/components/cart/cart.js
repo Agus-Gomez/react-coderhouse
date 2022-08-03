@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { CartContext } from "../../contexts/CartContext";
-import CartItem from "./CartItem";
+import CartList from "../CartList/CartList";
 import ContactForm from "./ContactForm/ContactForm";
 import { Link } from "react-router-dom";
 import Spinner from "../../Images/Spinner/Spinner";
@@ -37,6 +37,7 @@ const Cart = () => {
       phone: data.phone,
       email: data.email,
     };
+
     order.total = TotalPrice();
     order.items = cartList.map((cartItem) => {
       const id = cartItem.product.id;
@@ -117,14 +118,7 @@ const Cart = () => {
                       <button className="delete-all-btn" onClick={EmptyCart}>
                         Borrar todos mis productos
                       </button>
-
-                      {cartList.map((i) => (
-                        <CartItem
-                          key={i.product.id}
-                          product={i.product}
-                          count={i.count}
-                        />
-                      ))}
+                      <CartList cartList={cartList} />
                     </div>
                   </div>
                 </>

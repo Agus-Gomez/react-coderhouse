@@ -2,21 +2,36 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./ContactForm.css";
 
-const ContactForm = ({firebaseMethod, totalPrice, cartQuantity}) => {
-
-  const [data, setData] = useState ({name: '', lastName: '', phone:'', email: '', emailConfirmation: ''})
+const ContactForm = ({ firebaseMethod, totalPrice, cartQuantity }) => {
+  const [data, setData] = useState({
+    name: "",
+    lastName: "",
+    phone: "",
+    email: "",
+    emailConfirmation: "",
+  });
 
   const handleInputChange = (event) => {
     setData({
       ...data,
-      [event.target.name] : event.target.value
-    })
-  }
+      [event.target.name]: event.target.value,
+    });
+  };
 
   async function sendData(event) {
-    event.preventDefault()
-    firebaseMethod(data)
+    event.preventDefault();
+    if (emailValidation(data.email, data.emailConfirmation)) {
+      firebaseMethod(data);
+    }
+    else {
+      alert ("Por favor revisa que el correo sea el mismo");
+    }
   }
+
+  //Validacion de que los emails sean iguales
+  const emailValidation = (email, emailConfirmation) => {
+    return email === emailConfirmation;
+  };
 
   return (
     <>
@@ -32,36 +47,74 @@ const ContactForm = ({firebaseMethod, totalPrice, cartQuantity}) => {
               <form className="form--name" onSubmit={sendData}>
                 <div className="first">
                   <label htmlFor="firstname">Nombre:</label>
-                  <input placeholder="Fede.F" id="firstname" type="text" required onChange={handleInputChange} name="name"
+                  <input
+                    placeholder="Fede.F"
+                    id="firstname"
+                    type="text"
+                    required
+                    onChange={handleInputChange}
+                    name="name"
                   />
                 </div>
                 <div className="last">
                   <label htmlFor="lastname">Apellido:</label>
-                  <input placeholder="Osandon" id="lastname" type="text" required onChange={handleInputChange} name="lastName" />
+                  <input
+                    placeholder="Osandon"
+                    id="lastname"
+                    type="text"
+                    required
+                    onChange={handleInputChange}
+                    name="lastName"
+                  />
                 </div>
 
                 <div className="phone-number">
                   <label htmlFor="phone-number">Celular:</label>
-                  <input placeholder="011-555-2368-00" id="phone" type="text" required onChange={handleInputChange} name="phone" />
+                  <input
+                    placeholder="011-555-2368-00"
+                    id="phone"
+                    type="text"
+                    required
+                    onChange={handleInputChange}
+                    name="phone"
+                  />
                 </div>
 
                 <div className="email">
                   <label htmlFor="firstname">Correo:</label>
-                  <input placeholder="F.Osandon@profe.com" id="email" type="email" required onChange={handleInputChange} name="email" />
+                  <input
+                    placeholder="F.Osandon@profe.com"
+                    id="email"
+                    type="email"
+                    required
+                    onChange={handleInputChange}
+                    name="email"
+                  />
                 </div>
                 <div className="email">
                   <label htmlFor="firstname">Confirma tu correo:</label>
-                  <input placeholder="F.Osandon@profe.com" id="email-confirmation" type="email" required onChange={handleInputChange} name="emailConfirmation" />
-                </div> 
+                  <input
+                    placeholder="F.Osandon@profe.com"
+                    id="email-confirmation"
+                    type="email"
+                    required
+                    onChange={handleInputChange}
+                    name="emailConfirmation"
+                  />
+                </div>
 
                 <div className="cartTextContainer">
-                <p>El precio total de tus productos es : $ {totalPrice}</p>
-                <p>La cantidad total del carrito es : {cartQuantity}</p>
-              </div>
+                  <p>El precio total de tus productos es : $ {totalPrice}</p>
+                  <p>La cantidad total del carrito es : {cartQuantity}</p>
+                </div>
 
-                <button className="form-button" type="submit">Terminar compra</button>
+                <button className="form-button" type="submit">
+                  Terminar compra
+                </button>
                 <Link to="../products">
-                <button className="form-button" type="submit">Ver más productos</button>
+                  <button className="form-button" type="submit">
+                    Ver más productos
+                  </button>
                 </Link>
               </form>
             </div>
