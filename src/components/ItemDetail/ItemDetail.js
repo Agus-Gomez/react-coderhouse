@@ -4,9 +4,9 @@ import "../Item/Item.css";
 import { CartContext } from "../../contexts/CartContext";
 import { Link } from "react-router-dom";
 
+
 const ItemDetail = ({ product }) => {
   const { AddToCart } = useContext(CartContext);
-
   const [addedToCart, setAddedToCart] = useState(false);
 
   const onAdd = (count) => {

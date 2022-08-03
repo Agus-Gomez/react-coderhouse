@@ -3,10 +3,11 @@ import { collection, getDocs, getFirestore, query, where, } from "firebase/fires
 import { useParams } from "react-router-dom";
 import Spinner from "../../Images/Spinner/Spinner.js";
 import ItemList from "../../components/ItemList/ItemList";
+
+
 const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-
   const { categoriesId } = useParams();
 
   useEffect(() => {
